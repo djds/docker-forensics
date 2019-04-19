@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -euo pipefail
+
+REGISTRY="${REGISTRY:-}"
+
+user='djds'
+repo='regripper'
+tag=${1:-cosmic}
+
+# set environment vars
+GID="${GID:-$(id -g)}"
+ID="${ID:-$(id -u)}"
+
+# build the container:
+docker build \
+    --build-arg GID="${GID}" \
+    --build-arg ID="${ID}" \
+    -t "${REGISTRY}${user}/${repo}:${tag}" .
+
+if [[ "${PUSH:-}" == "true" ]]; then
+    docker push "${REGISTRY}${user}/${repo}:${tag}"
+fi
+
+# clean up our host environment
+unset {GID,ID}
