@@ -6,7 +6,7 @@ REGISTRY="${REGISTRY:-}"
 
 user='djds'
 repo='autopsy'
-tag=${1:-openjdk}
+tag=${1:-corretto}
 
 # set environment vars
 GID="${GID:-$(id -g)}"
