@@ -28,3 +28,8 @@ volatility:cosmic:
     script:
         - cd volatility
         - bash ./build cosmic
+
+ftkimager:cosmic:
+    script:
+        - cd ftkimager
+        - bash ./build cosmic
