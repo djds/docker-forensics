@@ -8,14 +8,7 @@ user='djds'
 repo='ftkimager'
 tag=${1:-cosmic}
 
-# set environment vars
-GID="${GID:-$(id -g)}"
-ID="${ID:-$(id -u)}"
-
-# build the container:
 docker build \
-    --build-arg GID="${GID}" \
-    --build-arg ID="${ID}" \
     -t "${REGISTRY}${user}/${repo}:${tag}" .
 
 if [[ "${PUSH:-}" == "true" ]]; then

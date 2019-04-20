@@ -10,7 +10,9 @@ docker run --rm -it \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e "DISPLAY=unix${DISPLAY}" \
-    -v "$(pwd):/home/ftk/data" \
+    -v "/var/local/backups/ftk:/data" \
     -v /dev/shm:/dev/shm \
-    --name volatility \
+    --device=/dev/sda \
+    --name ftkimager \
     "${REGISTRY}djds/ftkimager:${tag}" "${@}"
+#    -v "$(pwd):/data" \
