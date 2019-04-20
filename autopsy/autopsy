@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Use bghost/autopsy:cosmic by default
+tag="${1:-openjdk}"
+REGISTRY="${REGISTRY:-$DOCKER_REGISTRY}"
+
+if [ ! -d "${HOME}/.autopsy" ]; then
+    mkdir "${HOME}/.autopsy" 
+fi
+
+docker run --rm -d \
+    -c 4 \
+    -m 8192M \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e "DISPLAY=unix${DISPLAY}" \
+    --device /dev/dri \
+    --device /dev/snd \
+    -v "/dev/shm:/dev/shm" \
+    -v "${HOME}/.autopsy:/home/autopsy/.autopsy" \
+    -v "$(pwd):/home/autopsy/data" \
+    --name autopsy \
+    "${REGISTRY}djds/autopsy:${tag}"

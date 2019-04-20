@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -euo pipefail
+
+REGISTRY="${REGISTRY:-}"
+
+user='djds'
+repo='autopsy'
+tag=${1:-openjdk}
+
+# set environment vars
+GID="${GID:-$(id -g)}"
+AUDIO="${AUDIO:-$(getent group audio | cut -d ':' -f 3)}"
+ID="${ID:-$(id -u)}"
+
+# build the container:
+docker build \
+    --build-arg GID="${GID}" \
+    --build-arg ID="${ID}" \
+    --build-arg AUDIO="${AUDIO}" \
+    -t "${REGISTRY}${user}/${repo}:${tag}" .
+
+if [[ "${PUSH:-}" == "true" ]]; then
+    docker push "${REGISTRY}${user}/${repo}:${tag}"
+fi
+
+# clean up our host environment
+unset {GID,ID,AUDIO}
