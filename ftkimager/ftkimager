@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Use bghost/volitility:cosmic by default
+REGISTRY="${REGISTRY:-}"
+tag="cosmic"
+
+docker run --rm -it \
+    -c 4 \
+    -m 4096M \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e "DISPLAY=unix${DISPLAY}" \
+    -v "$(pwd):/home/ftk/data" \
+    -v /dev/shm:/dev/shm \
+    --name volatility \
+    "${REGISTRY}djds/ftk:${tag}" "${@}"
