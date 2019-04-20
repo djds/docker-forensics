@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Use bghost/volitility:cosmic by default
+# Use djds/ftkimager:latest by default
 REGISTRY="${REGISTRY:-}"
 tag="latest"
 
