@@ -6,7 +6,7 @@ REGISTRY="${REGISTRY:-}"
 
 user='djds'
 repo='volatility'
-tag=${1:-cosmic}
+tag=${1:-latest}
 
 # set environment vars
 GID="${GID:-$(id -g)}"

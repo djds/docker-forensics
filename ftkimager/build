@@ -6,7 +6,7 @@ REGISTRY="${REGISTRY:-}"
 
 user='djds'
 repo='ftkimager'
-tag=${1:-cosmic}
+tag=${1:-latest}
 
 docker build \
     -t "${REGISTRY}${user}/${repo}:${tag}" .

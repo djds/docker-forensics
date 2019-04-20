@@ -19,17 +19,17 @@ autopsy:corretto:
         - cd autopsy
         - bash ./build corretto
 
-regripper:cosmic:
+regripper:latest:
     script:
         - cd regripper
-        - bash ./build cosmic
+        - bash ./build latest
 
-volatility:cosmic:
+volatility:latest:
     script:
         - cd volatility
-        - bash ./build cosmic
+        - bash ./build latest
 
-ftkimager:cosmic:
+ftkimager:latest:
     script:
         - cd ftkimager
-        - bash ./build cosmic
+        - bash ./build latest

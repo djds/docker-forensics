@@ -2,7 +2,7 @@
 
 # Use djds/regripper:cosmic by default
 REGISTRY="${REGISTRY:-}"
-tag="cosmic"
+tag="latest"
 
 docker run --rm -it \
     -c 4 \

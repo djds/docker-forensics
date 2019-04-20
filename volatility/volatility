@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Use djds/volitility:cosmic by default
+# Use djds/volatility:latest by default
 REGISTRY="${REGISTRY:-}"
-tag="cosmic"
+tag="latest"
 
 docker run --rm -it \
     -c 4 \

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Use djds/autopsy:cosmic by default
-tag="${1:-openjdk}"
+# Use djds/autopsy:corretto by default
+tag="${1:-corretto}"
 REGISTRY="${REGISTRY:-$DOCKER_REGISTRY}"
 
 if [ ! -d "${HOME}/.autopsy" ]; then
