@@ -74,7 +74,7 @@ ARG AUDIO
 
 RUN groupadd -g $GID autopsy \
     && groupmod -g $AUDIO audio \
-    && useradd -m -G audio,video,plugdev -u $ID -g $GID autopsy \
+    && useradd -m -G audio,video -u $ID -g $GID autopsy \
     && mkdir -p /home/autopsy/data \
     && chown -R autopsy:autopsy /home/autopsy \
     && rm -rf /var/lib/apt/lists/* \
