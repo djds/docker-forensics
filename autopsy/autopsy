@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Use bghost/autopsy:cosmic by default
+# Use djds/autopsy:cosmic by default
 tag="${1:-openjdk}"
 REGISTRY="${REGISTRY:-$DOCKER_REGISTRY}"
 
