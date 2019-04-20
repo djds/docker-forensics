@@ -13,4 +13,4 @@ docker run --rm -it \
     -v "$(pwd):/home/ftk/data" \
     -v /dev/shm:/dev/shm \
     --name volatility \
-    "${REGISTRY}djds/ftk:${tag}" "${@}"
+    "${REGISTRY}djds/ftkimager:${tag}" "${@}"
