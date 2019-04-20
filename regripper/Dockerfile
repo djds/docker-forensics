@@ -19,6 +19,18 @@ RUN git clone "https://github.com/keydet89/RegRipper2.8.git" \
         /usr/share/perl5/Parse/Win32Registry/WinNT/Key_old.pm \
     && cp Key.pm /usr/share/perl5/Parse/Win32Registry/WinNT/Key.pm
 
+WORKDIR /opt/RegRipper2.8
+
+# Change #! and plugin locations for Linux
+RUN sed -i 's/#! c:\\perl\\bin\\perl.exe/#!\/usr\/bin\/perl/g' rip.pl \
+    && sed -i 's/^#push(@INC,$str);/push(@INC,$str);/g' rip.pl \
+    && sed -i '/($^O eq "MSWin32") ? ($plugindir = $str."plugins\/")/d' rip.pl \
+    && sed -i '/: ($plugindir = File::Spec->catfile("plugins"));/d' rip.pl \
+    && sed -i 's/^#my $plugindir = $str."plugins\/";/my $plugindir = $str."\/opt\/RegRipper2.8\/plugins\/";/g' rip.pl \
+    && sed -i 's/^#my $plugindir = File::Spec->catfile("plugins");/my $plugindir = File::Spec->catfile("\/opt\/RegRipper2.8\/plugins");/g' rip.pl \
+    && sed -i 's/^#print "Plugins Dir = ".$plugindir."\\n";/print "Plugins Dir = ".$plugindir."\\n";/g' rip.pl \
+    && chmod +x rip.pl 
+
 ARG GID
 ARG ID
     
@@ -33,4 +45,4 @@ WORKDIR /home/regripper/data
 # Run as non privileged user
 USER regripper
 
-ENTRYPOINT ["/usr/bin/perl", "/opt/RegRipper2.8/rip.pl"]
+ENTRYPOINT ["/opt/RegRipper2.8/rip.pl"]

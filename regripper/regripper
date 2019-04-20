@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Use bghost/volitility:cosmic by default
+# Use bghost/regripper:cosmic by default
 REGISTRY="${REGISTRY:-}"
 tag="cosmic"
 
@@ -13,5 +13,4 @@ docker run --rm -it \
     -v "$(pwd):/home/regripper/data" \
     -v /dev/shm:/dev/shm \
     --name regripper \
-    --entrypoint=/bin/bash \
     "${REGISTRY}djds/regripper:${tag}" "${@}"
