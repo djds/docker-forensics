@@ -72,9 +72,9 @@ ARG GID
 ARG ID
 ARG AUDIO
 
-RUN groupadd -g $GID autopsy \
-    && groupmod -g $AUDIO audio \
-    && useradd -m -G audio,video -u $ID -g $GID autopsy \
+RUN groupadd -g "${GID}" autopsy \
+    && groupmod -g "${AUDIO}" audio \
+    && useradd -m -G audio,video -u "${ID}" -g "${GID}" autopsy \
     && mkdir -p /home/autopsy/data \
     && chown -R autopsy:autopsy /home/autopsy \
     && rm -rf /var/lib/apt/lists/* \
