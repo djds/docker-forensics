@@ -1,6 +1,6 @@
 # Run autopsy in a container
 
-FROM ubuntu:cosmic
+FROM ubuntu:disco
 LABEL maintainer "djds djds@ccs.neu.edu"
 
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -44,7 +44,7 @@ RUN apt-get update && apt-get dist-upgrade -y \
 RUN apt-get install -y \
     gpg \
     software-properties-common \
-    openjdk-8-jdk
+    openjdk-13-jdk
 
 WORKDIR /opt
 
@@ -65,7 +65,7 @@ RUN gpg --recv-keys "0917A7EE58A9308B13D3963338AD602EC7454C8B" \
 WORKDIR /opt/sleuthkit-4.6.5 
 
 #RUN export JAVA_HOME="/usr/lib/jvm/java-8-oracle" \
-RUN export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64" \
+RUN export JAVA_HOME="/usr/lib/jvm/java-13-openjdk-amd64" \
     && ./configure \
     && make \
     && make install
@@ -74,7 +74,7 @@ WORKDIR /opt/autopsy-4.10.0
 
 #    && export JAVA_HOME="/usr/lib/jvm/java-8-oracle" \
 RUN chmod +x ./unix_setup.sh \
-    && export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64" \
+    && export JAVA_HOME="/usr/lib/jvm/java-13-openjdk-amd64" \
     && ./unix_setup.sh \
     && apt-get install -y --fix-broken \
     && chmod +x /opt/autopsy-4.10.0/bin/autopsy
