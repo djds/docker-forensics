@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Use djds/wireshark:latest by default
+tag="${1:-latest}"
+
+REGISTRY="${REGISTRY-$DOCKER_REGISTRY}"
+
+docker run --rm -d \
+    --cap-add=NET_ADMIN \
+    --net host \
+    -c 4 \
+    -m 2048M \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v "$(pwd):/home/wireshark/data" \
+    -e "DISPLAY=unix${DISPLAY}" \
+    --name wireshark \
+    "${REGISTRY}djds/wireshark:${tag}"
