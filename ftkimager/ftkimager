@@ -8,8 +8,6 @@ docker run --rm -it \
     -c 4 \
     -m 4096M \
     -v /etc/localtime:/etc/localtime:ro \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e "DISPLAY=unix${DISPLAY}" \
     -v /dev/shm:/dev/shm \
     -v "$(pwd):/data" \
     --name ftkimager \
