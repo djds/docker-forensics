@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Use djds/regripper:cosmic by default
+# Use djds/regripper:latest by default
 REGISTRY="${REGISTRY:-}"
 tag="latest"
 
