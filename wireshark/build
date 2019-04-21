@@ -6,7 +6,7 @@ REGISTRY="${REGISTRY:-}"
 
 user='djds'
 repo='wireshark'
-tag=${1:-rawhide}
+tag=${1:-latest}
 
 # set environment vars
 GID="${GID:-$(id -g)}"
