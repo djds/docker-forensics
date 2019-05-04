@@ -18,6 +18,6 @@ docker run --rm -d \
     --device /dev/snd \
     -v "/dev/shm:/dev/shm" \
     -v "${HOME}/.autopsy:/home/autopsy/.autopsy" \
-    -v "$(pwd):/home/autopsy/data" \
+    -v "${PWD}:/home/autopsy/data" \
     --name autopsy \
     "${REGISTRY}djds/autopsy:${tag}"

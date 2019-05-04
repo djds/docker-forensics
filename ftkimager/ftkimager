@@ -9,6 +9,6 @@ docker run --rm -it \
     -m 4096M \
     -v /etc/localtime:/etc/localtime:ro \
     -v /dev/shm:/dev/shm \
-    -v "$(pwd):/data" \
+    -v "${PWD}:/data" \
     --name ftkimager \
     "${REGISTRY}djds/ftkimager:${tag}" "${@}"

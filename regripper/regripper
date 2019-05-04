@@ -10,7 +10,7 @@ docker run --rm -it \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e "DISPLAY=unix${DISPLAY}" \
-    -v "$(pwd):/home/regripper/data" \
+    -v "${PWD}:/home/regripper/data" \
     -v /dev/shm:/dev/shm \
     --name regripper \
     "${REGISTRY}djds/regripper:${tag}" "${@}"

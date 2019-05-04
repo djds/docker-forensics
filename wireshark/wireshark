@@ -12,7 +12,7 @@ docker run --rm -d \
     -m 2048M \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v "$(pwd):/home/wireshark/data" \
+    -v "${PWD}:/home/wireshark/data" \
     -e "DISPLAY=unix${DISPLAY}" \
     --name wireshark \
     "${REGISTRY}djds/wireshark:${tag}"
