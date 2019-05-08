@@ -1,40 +1,40 @@
 image: docker:latest
 services:
-    - docker:dind
+  - docker:dind
 
 before_script:
-    - apk upgrade -U && apk add bash
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - export REGISTRY="registry.gitlab.com/bghost/docker-forensics/"
-    - export PUSH="true"
-    # Change below to match the user and group ID's
-    # on the target host machine
-    - export ID=1000
-    - export GID=1000
-    - export PLUGDEV=240
-    - export AUDIO=18
+  - apk upgrade -U && apk add bash
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - export REGISTRY="registry.gitlab.com/bghost/docker-forensics/"
+  - export PUSH="true"
+  # Change below to match the user and group ID's
+  # on the target host machine
+  - export ID=1000
+  - export GID=1000
+  - export PLUGDEV=240
+  - export AUDIO=18
 
 autopsy:corretto:
-    script:
-        - cd autopsy
-        - bash ./build corretto
+  script:
+    - cd autopsy
+    - bash ./build corretto
 
 regripper:latest:
-    script:
-        - cd regripper
-        - bash ./build latest
+  script:
+    - cd regripper
+    - bash ./build latest
 
 volatility:latest:
-    script:
-        - cd volatility
-        - bash ./build latest
+  script:
+    - cd volatility
+    - bash ./build latest
 
 ftkimager:latest:
-    script:
-        - cd ftkimager
-        - bash ./build latest
+  script:
+    - cd ftkimager
+    - bash ./build latest
 
 wireshark:latest:
-    script:
-        - cd wireshark
-        - bash ./build latest
+  script:
+    - cd wireshark
+    - bash ./build latest
