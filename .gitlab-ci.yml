@@ -2,17 +2,19 @@ image: docker:latest
 services:
   - docker:dind
 
-before_script:
-  - apk upgrade -U && apk add bash
-  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-  - export REGISTRY="registry.gitlab.com/bghost/docker-forensics/"
-  - export PUSH="true"
+variables:
+  REGISTRY: 'registry.gitlab.com/bghost/docker-forensics/'
+  PUSH: 'true'
   # Change below to match the user and group ID's
   # on the target host machine
-  - export ID=1000
-  - export GID=1000
-  - export PLUGDEV=240
-  - export AUDIO=18
+  ID: 1000
+  GID: 1000
+  PLUGDEV: 240
+  AUDIO: 18
+
+before_script:
+  - apk upgrade -U && apk add bash
+  - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
 
 autopsy:corretto:
   script:
