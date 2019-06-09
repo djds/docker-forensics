@@ -3,7 +3,7 @@ services:
   - docker:dind
 
 variables:
-  REGISTRY: "${CI_REGISTRY}/bghost/docker-forensics/"
+  REGISTRY: "${CI_REGISTRY_IMAGE}"
   PUSH: 'true'
   # Change below to match the user and group ID's
   # on the target host machine
