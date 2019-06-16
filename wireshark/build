@@ -6,18 +6,14 @@ REGISTRY="${REGISTRY:-}"
 
 user='djds'
 repo='wireshark'
-tag=${1:-latest}
+tag="${1:-latest}"
 
 # set environment vars
-GID="${GID:-$(id -g)}"
-AUDIO="${AUDIO:-$(getent group audio | cut -d ':' -f 3)}"
 ID="${ID:-$(id -u)}"
 
 # build the container:
 docker build \
-    --build-arg GID="${GID}" \
     --build-arg ID="${ID}" \
-    --build-arg AUDIO="${AUDIO}" \
     -t "${REGISTRY}${user}/${repo}:${tag}" .
 
 if [[ "${PUSH:-}" == "true" ]]; then

@@ -10,13 +10,9 @@ RUN dnf upgrade -y \
     google-noto-serif-fonts \
     mesa-dri-drivers mesa-libGL
     
-ARG GID
 ARG ID
-ARG AUDIO
     
-RUN groupdel dialout \
-    && groupmod -g "${AUDIO}" audio \
-    && useradd -m -g wireshark -G audio,video -u "${ID}" wireshark \
+RUN useradd -m -g wireshark -G audio,video -u "${ID}" wireshark \
     && mkdir -p /home/wireshark/data \
     && chown -R wireshark:wireshark /home/wireshark \
     && rm -rf /var/cache/dnf/*
