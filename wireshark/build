@@ -21,4 +21,4 @@ if [[ "${PUSH:-}" == "true" ]]; then
 fi
 
 # clean up our host environment
-unset {GID,ID,AUDIO}
+unset ID
