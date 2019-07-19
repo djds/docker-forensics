@@ -18,6 +18,7 @@ RUN apt-get update && apt-get dist-upgrade -y \
     libewf-dev \
     libgl1-mesa-dri \
     libgl1-mesa-glx \
+    libgstreamer1.0 \
     libsolr-java \
     libsqlite3-dev \
     libswt-gtk-4-java \
