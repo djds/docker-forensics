@@ -9,6 +9,7 @@ RUN apt-get update && apt-get dist-upgrade -y \
     && apt-get install -y \
     ant \
     ca-certificates \
+    dos2unix \
     g++ \
     gcc \
     gpg \
@@ -39,8 +40,9 @@ RUN apt-get update && apt-get dist-upgrade -y \
 
 WORKDIR /opt
 
-RUN wget "https://d3pxv6yz143wms.cloudfront.net/8.212.04.1/java-1.8.0-amazon-corretto-jdk_8.212.04-1_amd64.deb" \
-    && apt-get install -y ./java-1.8.0-amazon-corretto-jdk_8.212.04-1_amd64.deb \
+RUN wget "https://d3pxv6yz143wms.cloudfront.net/8.222.10.1/java-1.8.0-amazon-corretto-jdk_8.222.10-1_amd64.deb" \
+    && ( [ "$(md5sum ./java-1.8.0-amazon-corretto-jdk_8.222.10-1_amd64.deb | awk '{print $1}')" = "c557ec2400165ebbd665fe4a95658efd" ] || exit 1 ) \
+    && apt-get install -y ./java-1.8.0-amazon-corretto-jdk_8.222.10-1_amd64.deb \
     && apt-get install -y --fix-missing
 
 RUN wget "https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.12.0/autopsy-4.12.0.zip" \
@@ -54,17 +56,18 @@ RUN gpg --recv-keys "0917A7EE58A9308B13D3963338AD602EC7454C8B" \
     && tar -xf sleuthkit-4.6.7.tar.gz \
     && unzip autopsy-4.12.0.zip
 
+ENV JAVA_HOME="/usr/lib/jvm/java-1.8.0-amazon-corretto/" 
+
 WORKDIR /opt/sleuthkit-4.6.7 
 
-RUN export JAVA_HOME="/usr/lib/jvm/java-1.8.0-amazon-corretto/" \
-    && ./configure \
+RUN ./configure \
     && make \
     && make install
 
 WORKDIR /opt/autopsy-4.12.0
 
-RUN chmod +x ./unix_setup.sh \
-    && export JAVA_HOME="/usr/lib/jvm/java-1.8.0-amazon-corretto/" \
+RUN dos2unix ./unix_setup.sh \
+    && chmod +x ./unix_setup.sh \
     && ./unix_setup.sh \
     && apt-get install -y --fix-broken \
     && chmod +x /opt/autopsy-4.12.0/bin/autopsy
