@@ -1,6 +1,6 @@
 # Run FTK Imager in a container
 
-FROM ubuntu:disco
+FROM ubuntu:eoan
 LABEL maintainer "djds djds@ccs.neu.edu"
 
 ENV DEBIAN_FRONTEND="noninteractive"
