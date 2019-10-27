@@ -41,8 +41,8 @@ RUN apt-get update && apt-get dist-upgrade -y \
 WORKDIR /opt
 
 RUN wget "https://d3pxv6yz143wms.cloudfront.net/8.232.09.1/java-1.8.0-amazon-corretto-jdk_8.232.09-1_amd64.deb" \
-    && ( [ "$(md5sum ./java-1.8.0-amazon-corretto-jdk_8.222.10-1_amd64.deb | awk '{print $1}')" = "88ea4a5a1dbdf8b11437cf945552f14c" ] || exit 1 ) \
-    && apt-get install -y ./java-1.8.0-amazon-corretto-jdk_8.222.10-1_amd64.deb \
+    && ( [ "$(md5sum ./java-1.8.0-amazon-corretto-jdk_8.232.09-1_amd64.deb | awk '{print $1}')" = "88ea4a5a1dbdf8b11437cf945552f14c" ] || exit 1 ) \
+    && apt-get install -y ./java-1.8.0-amazon-corretto-jdk_8.232.09-1_amd64.deb \
     && apt-get install -y --fix-missing
 
 RUN wget "https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.13.0/autopsy-4.13.0.zip" \
