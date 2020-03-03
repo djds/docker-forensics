@@ -1,6 +1,4 @@
-# Run autopsy in a container
-
-FROM ubuntu:eoan
+FROM ubuntu:focal
 LABEL maintainer "djds djds@ccs.neu.edu"
 
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -11,6 +9,7 @@ RUN apt-get update && apt-get dist-upgrade -y \
     ca-certificates \
     curl \
     dos2unix \
+    fonts-noto \
     g++ \
     gcc \
     gpg \
