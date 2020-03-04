@@ -10,7 +10,7 @@ tag="${1:-corretto}"
 
 # set environment vars
 GID="${GID:-$(id -g)}"
-AUDIO="${AUDIO:-$(getent group audio | cut -d ':' -f 3)}"
+AUDIO="${AUDIO:-"$(getent group audio | cut -d ':' -f 3)"}"
 ID="${ID:-$(id -u)}"
 
 # build the container:
