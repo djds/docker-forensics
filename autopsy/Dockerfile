@@ -40,9 +40,9 @@ RUN apt-get update && apt-get dist-upgrade -y \
 
 WORKDIR /opt
 
-RUN wget "https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.deb" \
-    && ( [ "$(md5sum ./amazon-corretto-11-x64-linux-jdk.deb | awk '{print $1}')" = "$(curl https://corretto.aws/downloads/latest_checksum/amazon-corretto-11-x64-linux-jdk.deb)" ] || exit 1 ) \
-    && apt-get install -qq ./amazon-corretto-11-x64-linux-jdk.deb \
+RUN wget "https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.deb" \
+    && ( [ "$(md5sum ./amazon-corretto-8-x64-linux-jdk.deb | awk '{print $1}')" = "$(curl https://corretto.aws/downloads/latest_checksum/amazon-corretto-8-x64-linux-jdk.deb)" ] || exit 1 ) \
+    && apt-get install -qq ./amazon-corretto-8-x64-linux-jdk.deb \
     && apt-get install -qq --fix-missing
 
 RUN wget "https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.14.0/autopsy-4.14.0.zip" \
@@ -58,7 +58,7 @@ RUN gpg \
     && tar -xf sleuthkit-4.8.0.tar.gz \
     && unzip autopsy-4.14.0.zip
 
-ENV JAVA_HOME="/usr/lib/jvm/java-11-amazon-corretto/" 
+ENV JAVA_HOME="/usr/lib/jvm/java-8-amazon-corretto/" 
 
 WORKDIR /opt/sleuthkit-4.8.0 
 
