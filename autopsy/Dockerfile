@@ -90,7 +90,7 @@ RUN groupadd -g "${GID}" autopsy \
 
 WORKDIR /home/autopsy/data
 
-# Run as non privileged user
+# Run as non-privileged user
 USER autopsy
 
-ENTRYPOINT [ "/opt/autopsy-4.14.0/bin/autopsy" ]
+ENTRYPOINT ["/opt/autopsy-4.14.0/bin/autopsy"]
