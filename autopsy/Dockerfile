@@ -50,7 +50,9 @@ RUN wget "https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.14.0/
     && wget "https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.8.0/sleuthkit-4.8.0.tar.gz" \
     && wget "https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.8.0/sleuthkit-4.8.0.tar.gz.asc"
 
-RUN gpg --recv-keys "0917A7EE58A9308B13D3963338AD602EC7454C8B" \
+RUN gpg \
+        --keyserver "hkps://keyserver.ubuntu.com" \
+        --recv-keys "0917A7EE58A9308B13D3963338AD602EC7454C8B" \
     && gpg --verify autopsy-4.14.0.zip.asc \
     && gpg --verify sleuthkit-4.8.0.tar.gz.asc \
     && tar -xf sleuthkit-4.8.0.tar.gz \
