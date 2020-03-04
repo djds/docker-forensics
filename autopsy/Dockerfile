@@ -58,7 +58,7 @@ RUN gpg \
     && tar -xf sleuthkit-4.8.0.tar.gz \
     && unzip autopsy-4.14.0.zip
 
-ENV JAVA_HOME="/usr/lib/jvm/java-8-amazon-corretto/" 
+ENV JAVA_HOME="/usr/lib/jvm/java-1.8.0-amazon-corretto/" 
 
 WORKDIR /opt/sleuthkit-4.8.0 
 
