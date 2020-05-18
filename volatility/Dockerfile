@@ -1,6 +1,6 @@
 # Run volatility in a container
 
-FROM ubuntu:eoan
+FROM ubuntu:focal
 LABEL maintainer "djds djds@ccs.neu.edu"
 
 ENV DEBIAN_FRONTEND="noninteractive"
